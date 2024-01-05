@@ -1,0 +1,25 @@
+@model Post
+
+<div class="row">
+    <div class="col-6">
+
+        <form asp-action="CreatePost" method="post">
+            <div>
+                <label asp-for="Content"></label>
+                <input asp-for="Content">
+                <span asp-validation-for="Content"></span>
+            </div>
+            <div>
+                <select asp-for="UserId">
+
+                    @foreach(var user in ViewBag.Users){
+                        <option value="@user.UserId"> @user.Name </option>
+                    }
+                </select>
+            </div>
+
+            
+            <input type="submit" value="Create Post">
+        </form>
+    </div>
+</div>

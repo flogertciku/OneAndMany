@@ -1,0 +1,33 @@
+@model Comment
+<div class="row">
+    <div class="col-6">
+        <h2> @ViewBag.post.Content</h2>
+        <h4>komentet</h4>
+        @foreach(var koment in ViewBag.post.komentet){
+            <p> @koment.creatorOfComment.Name says : @koment.Content</p>
+        }
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+
+        <form asp-action="CreateComment" asp-route-id="@ViewBag.post.PostId" method="post">
+            <div>
+                <label asp-for="Content"></label>
+                <input asp-for="Content">
+                <span asp-validation-for="Content"></span>
+            </div>
+            <div>
+                <select asp-for="UserId">
+
+                    @foreach(var user in ViewBag.Users){
+                        <option value="@user.UserId"> @user.Name </option>
+                    }
+                </select>
+            </div>
+
+            
+            <input type="submit" value="Create Comment">
+        </form>
+    </div>
+</div>

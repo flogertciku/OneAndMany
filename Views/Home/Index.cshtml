@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center row">
+    <div class="col-6">
+        <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Content</th>
+      <th scope="col">Created By</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach(var post in ViewBag.posts){
+           <tr>
+      <th scope="row">@post.PostId</th>
+      <td>@post.Content</td>
+      <td>@post.Creator.Name</td>
+      <td>
+        <a asp-action="AddComment" asp-route-id="@post.PostId"> Add A Comment</a>
+      </td>
+    </tr>
+    }
+
+ 
+
+  </tbody>
+</table>
+    </div>
+    </div>
